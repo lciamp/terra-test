@@ -41,6 +41,7 @@ pipeline {
 				//sh "rm -rf terraform.zip"
 				sh "ls -l"
     			sh "/Users/lciampanelli/.terraform.versions/terraform_0.11.11 init"
+    			sh "echo $AWS_ACCESS_KEY_ID"
     			sh "/Users/lciampanelli/.terraform.versions/terraform_0.11.11 plan"
     			input "Do you approve deployment?"
 
