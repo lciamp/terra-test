@@ -40,8 +40,8 @@ pipeline {
 				//sh "mv terraform /usr/bin"
 				//sh "rm -rf terraform.zip"
 				sh "ls -l"
-    			sh "./usr/local/bin/terraform init"
-    			sh "./usr/local/bin/terraform plan"
+    			sh "./Users/lciampanelli/.terraform.versions/terraform_0.11.11 init"
+    			sh "./Users/lciampanelli/.terraform.versions/terraform_0.11.11 plan"
     			input "Do you approve deployment?"
 
     		}
