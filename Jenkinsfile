@@ -34,7 +34,7 @@ pipeline {
     	stage("Plan") {
     		steps {
 
-				sh "whoami"
+				//sh "whoami"
 				//sh "curl -o terraform.zip https://releases.hashicorp.com/terraform/'$terraform_version'/terraform_'$terraform_version'_linux_amd64.zip"
 				//sh "unzip terraform.zip"
 				//sh "mv terraform /usr/bin"
@@ -45,6 +45,12 @@ pipeline {
     			sh "/Users/lciampanelli/.terraform.versions/terraform_0.11.11 plan"
     			input "Do you approve deployment?"
 
+    		}
+    	}
+    	stage ("Apply") {
+    		steps {
+    			echo "appying"
+    			sh "echo 'yes' | /Users/lciampanelli/.terraform.versions/terraform_0.11.11 apply"
     		}
     	}
     }
