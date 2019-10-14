@@ -39,6 +39,7 @@ pipeline {
 				sh "unzip terraform.zip"
 				//sh "mv terraform /usr/bin"
 				//sh "rm -rf terraform.zip"
+				sh "ls -l"
     			sh "./terraform init"
     			sh "./terraform plan"
     			input "Do you approve deployment?"
