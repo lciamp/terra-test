@@ -37,7 +37,7 @@ pipeline {
 				sh "echo whoami"
 				sh "curl -o terraform.zip https://releases.hashicorp.com/terraform/'$terraform_version'/terraform_'$terraform_version'_linux_amd64.zip"
 				sh "unzip terraform.zip"
-				sh "mv terraform /usr/bin"
+				//sh "mv terraform /usr/bin"
 				//sh "rm -rf terraform.zip"
     			sh "./terraform init"
     			sh "./terraform plan"
