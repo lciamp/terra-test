@@ -29,6 +29,31 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '20'))
     }
     stages {
-    	stage()
+    	stage("Plan") {
+    		steps {
+    			sh "terraform init"
+    			sh "terraform plan"
+    			input "Do you approve deployment?"
+
+    		}
+    	}
+    }
+    post {
+        failure {
+            echo "fail"
+            //slackSend (color: 'danger', message: "@here maximilian3_${GIT_BRANCH} - Build #${BUILD_NUMBER} Failed. (<${env.BUILD_URL}|Open>)")
+        }
+        success {
+            echo "good"
+            //slackSend (color: 'good', message: "maximilian3_${GIT_BRANCH} - Build #${BUILD_NUMBER} Success. (<${env.BUILD_URL}|Open>)")
+        }
+        always {
+            echo 'Updating folder permissions.'
+            sh "chmod -R 777 ."
+        }
+        cleanup {
+            echo 'Workspace cleanup.'
+            deleteDir()
+        }
     }
 }
