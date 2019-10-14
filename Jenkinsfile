@@ -35,13 +35,13 @@ pipeline {
     		steps {
 
 				sh "whoami"
-				sh "curl -o terraform.zip https://releases.hashicorp.com/terraform/'$terraform_version'/terraform_'$terraform_version'_linux_amd64.zip"
-				sh "unzip terraform.zip"
+				//sh "curl -o terraform.zip https://releases.hashicorp.com/terraform/'$terraform_version'/terraform_'$terraform_version'_linux_amd64.zip"
+				//sh "unzip terraform.zip"
 				//sh "mv terraform /usr/bin"
 				//sh "rm -rf terraform.zip"
 				sh "ls -l"
     			sh "/Users/lciampanelli/.terraform.versions/terraform_0.11.11 init"
-    			sh "echo $AWS_ACCESS_KEY_ID"
+
     			sh "/Users/lciampanelli/.terraform.versions/terraform_0.11.11 plan"
     			input "Do you approve deployment?"
 
