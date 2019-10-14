@@ -1,6 +1,8 @@
 #!groovy
 import groovy.json.JsonOutput
 
+env.terraform_version = '0.11.11'
+
 //slack env vars
 env.slack_url = 'https://hooks.slack.com/services/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'
 env.notification_channel = 'terra-test'
@@ -31,6 +33,12 @@ pipeline {
     stages {
     	stage("Plan") {
     		steps {
+
+				sh "cd /tmp"
+				sh "curl -o terraform.zip https://releases.hashicorp.com/terraform/'$terraform_version'/terraform_'$terraform_version'_linux_amd64.zip"
+				sh "unzip terraform.zip"
+				sh "sudo mv terraform /usr/bin"
+				sh "rm -rf terraform.zip"
     			sh "terraform init"
     			sh "terraform plan"
     			input "Do you approve deployment?"
