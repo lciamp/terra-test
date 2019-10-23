@@ -54,7 +54,7 @@ pipeline {
     	stage ("Apply") {
     		steps {
     			echo "appying"
-    			sh "/Users/lciampanelli/.terraform.versions/terraform_0.11.11 apply"
+    			sh "echo 'yes' | /Users/lciampanelli/.terraform.versions/terraform_0.11.11 apply"
     		}
     	}
     }
