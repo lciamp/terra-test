@@ -39,20 +39,22 @@ pipeline {
 				//sh "unzip terraform.zip"
 				//sh "mv terraform /usr/bin"
 				//sh "rm -rf terraform.zip"
-                slackSend (color: 'danger', message: "@here terra_test_${GIT_BRANCH} - Build #${BUILD_NUMBER} Started. (<${env.BUILD_URL}|Open>)")
+                slackSend (color: 'good', message: "@here terra_test_${GIT_BRANCH} - Build #${BUILD_NUMBER} Started. (<${env.BUILD_URL}|Open>)")
         
 				sh "ls -l"
     			sh "/Users/lciampanelli/.terraform.versions/terraform_0.11.11 init"
 
     			sh "/Users/lciampanelli/.terraform.versions/terraform_0.11.11 plan"
+                slackSend (color: 'good', message: "@here Do you approve deployment? Please view terraform plan in Jenkins. (<${env.BUILD_URL}|Open>)")
     			input "Do you approve deployment?"
+
 
     		}
     	}
     	stage ("Apply") {
     		steps {
     			echo "appying"
-    			sh "echo 'yes' | /Users/lciampanelli/.terraform.versions/terraform_0.11.11 apply"
+    			sh "/Users/lciampanelli/.terraform.versions/terraform_0.11.11 apply"
     		}
     	}
     }
