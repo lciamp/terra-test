@@ -57,11 +57,11 @@ pipeline {
     post {
         failure {
             echo "fail"
-            //slackSend (color: 'danger', message: "@here maximilian3_${GIT_BRANCH} - Build #${BUILD_NUMBER} Failed. (<${env.BUILD_URL}|Open>)")
+            //slackSend (color: 'danger', message: "@here terra_test_${GIT_BRANCH} - Build #${BUILD_NUMBER} Failed. (<${env.BUILD_URL}|Open>)")
         }
         success {
             echo "good"
-            //slackSend (color: 'good', message: "maximilian3_${GIT_BRANCH} - Build #${BUILD_NUMBER} Success. (<${env.BUILD_URL}|Open>)")
+            //slackSend (color: 'good', message: "terra_test_${GIT_BRANCH} - Build #${BUILD_NUMBER} Success. (<${env.BUILD_URL}|Open>)")
         }
         always {
             echo 'Updating folder permissions.'
